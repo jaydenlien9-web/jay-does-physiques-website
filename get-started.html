@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Get Started with Personal Training | Jay Does Physiques</title>
+  <meta name="description" content="Ready to transform? Choose your path: Quick inquiry for questions or complete pre-training screening to start immediately. TAFE-qualified trainer at Goodlife Joondalup." />
+  <meta name="theme-color" content="#0B0C0C" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,700;1,700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="styles.css">
+
+  <style>
+    .get-started-page {
+      padding: 60px 0 80px;
+      background: linear-gradient(135deg, #f8fbff 0%, #ffffff 50%, #f4f7fb 100%);
+      min-height: calc(100vh - 200px);
+    }
+
+    .get-started-container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .get-started-header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .get-started-header h1 {
+      font-family: var(--font-display);
+      font-size: var(--h2);
+      font-weight: 700;
+      margin: 0 0 12px 0;
+      line-height: 1.15;
+      color: var(--ink);
+    }
+
+    .get-started-header p {
+      font-size: var(--lead);
+      color: var(--gray-600);
+      margin: 0;
+      max-width: 700px;
+      margin-inline: auto;
+    }
+
+    .path-selector {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      margin-bottom: 48px;
+    }
+
+    @media (max-width: 768px) {
+      .path-selector {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+    }
+
+    .path-card {
+      background: white;
+      border: 3px solid var(--hair);
+      border-radius: var(--radius-lg);
+      padding: 32px 28px;
+      text-align: center;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .path-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--green);
+    }
+
+    .path-card.primary {
+      border-color: var(--green);
+      background: linear-gradient(135deg, #ffffff 0%, #f0fdf4 100%);
+    }
+
+    .path-card.primary::before {
+      content: 'RECOMMENDED';
+      position: absolute;
+      top: 16px;
+      right: -32px;
+      background: linear-gradient(135deg, var(--green) 0%, var(--green-dark) 100%);
+      color: white;
+      padding: 4px 40px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      transform: rotate(45deg);
+      box-shadow: 0 2px 8px rgba(46, 204, 113, 0.3);
+    }
+
+    .path-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--green) 0%, var(--green-dark) 100%);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      margin: 0 auto 20px;
+      box-shadow: 0 6px 20px rgba(46, 204, 113, 0.25);
+    }
+
+    .path-card.secondary .path-icon {
+      background: linear-gradient(135deg, var(--blue-deep) 0%, var(--blue-navy) 100%);
+      box-shadow: 0 8px 24px rgba(15, 76, 129, 0.25);
+    }
+
+    .path-card h2 {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      margin: 0 0 8px 0;
+      color: var(--ink);
+    }
+
+    .path-card .subtitle {
+      color: var(--gray-600);
+      font-size: 0.95rem;
+      margin: 0 0 16px 0;
+      font-weight: 500;
+    }
+
+    .path-features {
+      text-align: left;
+      margin: 20px 0 16px;
+      padding: 16px 0;
+      border-top: 1px solid var(--hair);
+      border-bottom: 1px solid var(--hair);
+      flex-shrink: 0;
+    }
+
+    .path-feature {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 12px;
+      font-size: 0.9rem;
+      color: var(--gray-700);
+      line-height: 1.4;
+    }
+
+    .path-feature:last-child {
+      margin-bottom: 0;
+    }
+
+    .path-feature i {
+      color: var(--green);
+      margin-top: 3px;
+      flex-shrink: 0;
+    }
+
+    .path-card.secondary .path-feature i {
+      color: var(--blue-deep);
+    }
+
+    .path-time {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      background: rgba(46, 204, 113, 0.1);
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--green-dark);
+      margin-bottom: 24px;
+    }
+
+    .path-card.secondary .path-time {
+      background: rgba(15, 76, 129, 0.1);
+      color: var(--blue-deep);
+    }
+
+    .path-cta {
+      margin-top: 0;
+    }
+
+    .best-for {
+      background: var(--gray-50);
+      border-radius: var(--radius-sm);
+      padding: 14px;
+      margin-top: auto;
+      margin-bottom: 16px;
+      text-align: left;
+    }
+
+    .best-for strong {
+      display: block;
+      font-size: 0.75rem;
+      color: var(--gray-600);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 6px;
+    }
+
+    .best-for p {
+      margin: 0;
+      color: var(--gray-700);
+      font-size: 0.88rem;
+      line-height: 1.4;
+    }
+
+    /* Contact Options */
+    .direct-contact {
+      background: white;
+      border: 1px solid var(--hair);
+      border-radius: var(--radius-lg);
+      padding: 40px;
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .direct-contact h3 {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      margin: 0 0 8px 0;
+      color: var(--ink);
+    }
+
+    .direct-contact p {
+      color: var(--gray-600);
+      margin: 0 0 32px 0;
+    }
+
+    .contact-methods {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .contact-method-card {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 16px 24px;
+      background: var(--gray-50);
+      border: 2px solid var(--gray-200);
+      border-radius: var(--radius);
+      transition: all 0.2s ease;
+      color: var(--ink);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .contact-method-card:hover {
+      border-color: var(--green);
+      background: rgba(46, 204, 113, 0.05);
+      transform: translateY(-2px);
+    }
+
+    .contact-method-card i {
+      font-size: 1.3rem;
+      color: var(--green);
+    }
+
+    @media (max-width: 640px) {
+      .contact-methods {
+        flex-direction: column;
+      }
+
+      .contact-method-card {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .path-card {
+        padding: 28px 20px;
+      }
+
+      .path-card h2 {
+        font-size: 1.3rem;
+      }
+
+      .path-feature {
+        font-size: 0.85rem;
+      }
+
+      .best-for p {
+        font-size: 0.85rem;
+      }
+
+      .direct-contact {
+        padding: 32px 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap header-content">
+      <a href="/" class="brand">Jay Does Physiques</a>
+      <div class="spacer"></div>
+      <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
+        <i class="fas fa-bars"></i>
+        <span>Menu</span>
+      </button>
+      <nav class="nav-menu" id="nav">
+        <a class="nav-link" href="/">Home</a>
+        <a class="nav-link" href="/about.html">About</a>
+        <a class="nav-link" href="/programs.html">Programs</a>
+        <a class="btn btn-primary btn-compact" href="/get-started.html">Get Started</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="get-started-page">
+    <div class="wrap get-started-container">
+      <div class="get-started-header">
+        <h1>Ready to Get Started?</h1>
+        <p>Choose the option that best fits where you are right now. Not sure? No worries - reach out and we'll figure it out together.</p>
+      </div>
+
+      <div class="path-selector">
+        <!-- Path 1: Pre-Screening (Primary) -->
+        <div class="path-card primary">
+          <div class="path-icon">
+            <i class="fas fa-clipboard-check"></i>
+          </div>
+          <h2>Start Training Now</h2>
+          <p class="subtitle">Complete pre-training screening</p>
+
+          <div class="path-time">
+            <i class="fas fa-clock"></i>
+            <span>5-7 minutes</span>
+          </div>
+
+          <div class="path-features">
+            <div class="path-feature">
+              <i class="fas fa-check-circle"></i>
+              <span>I'll reach out within 24 hours to discuss next steps</span>
+            </div>
+            <div class="path-feature">
+              <i class="fas fa-check-circle"></i>
+              <span>We'll book your first session or set up your program</span>
+            </div>
+            <div class="path-feature">
+              <i class="fas fa-check-circle"></i>
+              <span>Skip the back-and-forth — start training faster</span>
+            </div>
+            <div class="path-feature">
+              <i class="fas fa-check-circle"></i>
+              <span>Health screening ensures safe, effective training</span>
+            </div>
+          </div>
+
+          <div class="best-for">
+            <strong>What happens next:</strong>
+            <p>I'll review your info and call/email you within 24 hours to confirm your program, book your first session, and answer any questions. Then we get started.</p>
+          </div>
+
+          <div class="path-cta">
+            <a href="/screening.html" class="btn btn-hero-primary btn-large" style="width: 100%; justify-content: center;">
+              <span>Complete Screening & Start Training</span>
+              <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Path 2: Contact/Inquiry (Secondary) -->
+        <div class="path-card secondary">
+          <div class="path-icon">
+            <i class="fas fa-comments"></i>
+          </div>
+          <h2>Have Questions?</h2>
+          <p class="subtitle">Quick inquiry or consultation request</p>
+
+          <div class="path-time">
+            <i class="fas fa-clock"></i>
+            <span>2 minutes</span>
+          </div>
+
+          <div class="path-features">
+            <div class="path-feature">
+              <i class="fas fa-check-circle"></i>
+              <span>Ask about programs, pricing, or FIFO options</span>
+            </div>
+            <div class="path-feature">
+              <i class="fas fa-check-circle"></i>
+              <span>Book a free consultation call</span>
+            </div>
+            <div class="path-feature">
+              <i class="fas fa-check-circle"></i>
+              <span>Get answers within 24 hours</span>
+            </div>
+            <div class="path-feature">
+              <i class="fas fa-check-circle"></i>
+              <span>No pressure, just information</span>
+            </div>
+          </div>
+
+          <div class="best-for">
+            <strong>Best for:</strong>
+            <p>You're still researching, have specific questions, or want to chat before committing. You're interested but need more information first.</p>
+          </div>
+
+          <div class="path-cta">
+            <a href="/contact.html" class="btn btn-hero-primary btn-large" style="width: 100%; justify-content: center; background: linear-gradient(135deg, var(--blue-deep) 0%, var(--blue-navy) 100%);">
+              <span>Send Quick Inquiry</span>
+              <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Direct Contact Section -->
+      <div class="direct-contact">
+        <h3>Prefer to Talk Directly?</h3>
+        <p>Sometimes it's easier to just have a conversation. Give me a call or send an email.</p>
+
+        <div class="contact-methods">
+          <a href="tel:0482010549" class="contact-method-card">
+            <i class="fas fa-phone"></i>
+            <span>0482 010 549</span>
+          </a>
+          <a href="mailto:jaydenlien9@gmail.com" class="contact-method-card">
+            <i class="fas fa-envelope"></i>
+            <span>jaydenlien9@gmail.com</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="brand">Jay Does Physiques</div>
+          <p>TAFE-qualified personal trainer and national kickboxing champion helping people in Joondalup build strength and confidence.</p>
+          <div class="footer-abn">ABN: 30 854 429 934</div>
+        </div>
+
+        <div class="footer-links">
+          <h4>Navigate</h4>
+          <nav>
+            <a href="/">Home</a>
+            <a href="/about.html">About</a>
+            <a href="/programs.html">Programs</a>
+            <a href="/get-started.html">Get Started</a>
+          </nav>
+        </div>
+
+        <div class="footer-links">
+          <h4>Programs</h4>
+          <nav>
+            <a href="/programs.html#in-person">In-Person Training</a>
+            <a href="/programs.html#online">Online Coaching</a>
+            <a href="/programs.html#fifo">FIFO Packages</a>
+            <a href="/programs.html#program-design">Program Design</a>
+          </nav>
+        </div>
+
+        <div class="footer-contact">
+          <h4>Get in Touch</h4>
+          <div class="footer-contact-methods">
+            <a href="tel:0482010549">
+              <i class="fas fa-phone"></i>
+              0482 010 549
+            </a>
+            <a href="mailto:jaydenlien9@gmail.com">
+              <i class="fas fa-envelope"></i>
+              jaydenlien9@gmail.com
+            </a>
+            <div class="footer-location">
+              <i class="fas fa-map-marker-alt"></i>
+              Goodlife Joondalup, WA
+            </div>
+          </div>
+          <div class="footer-social">
+            <a href="https://instagram.com/jaydoesphysiques" aria-label="Instagram" target="_blank" rel="noopener">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://facebook.com/jaydoesphysiques" aria-label="Facebook" target="_blank" rel="noopener">
+              <i class="fab fa-facebook"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; <span id="year"></span> Jay Does Physiques. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
